@@ -36,7 +36,7 @@ no external tools.
 
 ```bash
 git clone https://github.com/jeremy63s/covalent-scaffold-mapper
-cd scaffold-binding
+cd ~/covalent-scaffold-mapper
 
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
