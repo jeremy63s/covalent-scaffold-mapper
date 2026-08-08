@@ -35,7 +35,7 @@ Needs Python 3.9 or newer and nothing else — no compilers, no system libraries
 no external tools.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/jeremy63s/covalent-scaffold-mapper
 cd scaffold-binding
 
 python3 -m venv .venv
