@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Analysis outputs and cached structures - regenerate these, don't commit them
+scaffold_binding_results/
+results/
+structures/
+*.pdb
+*.cif
+
+# Mass spec data - too large for git, keep it outside the repo
+*.mzid
+*.mzid.gz
+*.MGF
+*.mgf
+*.raw
+
+# macOS
+.DS_Store
