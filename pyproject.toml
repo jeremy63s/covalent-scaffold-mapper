@@ -22,3 +22,6 @@ scaffold-binding = "scaffold_binding.cli:main"
 
 [tool.setuptools]
 packages = ["scaffold_binding"]
+
+license = "MIT"
+license-files = ["LICENSE"]
