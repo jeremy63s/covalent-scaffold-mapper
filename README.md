@@ -36,7 +36,7 @@ no external tools.
 
 ```bash
 git clone https://github.com/jeremy63s/covalent-scaffold-mapper
-cd ~/covalent-scaffold-mapper
+cd covalent-scaffold-mapper
 
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -55,55 +55,95 @@ If you plan to edit the code, use `pip install -e .` instead so your changes
 take effect without reinstalling.
 
 If you would rather not install anything, `pip install -r requirements.txt` and
-then run `python -m scaffold_binding` from inside this directory. Every command
-below works the same way, just with that longer form.
+then run `python -m scaffold_binding` from the repository root (the folder that
+contains `scaffold_binding/`). Every command below works the same way, just with
+that longer form.
 
 ## Run
 
-Start here. With no arguments it asks for everything it needs, one question at a
-time, and explains the two scaffold parameters as it goes:
+The workflow is five steps: list the samples, do a small trial run, run the full
+set, read the results table, then open a plot to inspect a candidate. The table
+is the answer; the plots are for checking it.
 
-```bash
-scaffold-binding
-```
+With no arguments, `scaffold-binding` asks for everything one question at a time
+and explains the two scaffold parameters as it goes — a fine way to start. The
+steps below are the same thing, run explicitly.
 
-Once you know what you want, give it everything up front:
+### 1. List the samples
 
-```bash
-scaffold-binding \
-  --mzid ~/data/experiment.mzid.gz \
-  --treatment run_01 run_02 \
-  --control run_03 \
-  --output ~/results/experiment \
-  --scaffold-size 25 \
-  --rigidity 0.7
-```
-
-Your sample names come from the export itself, so check them before choosing:
+Your treatment and control names live *inside* the export, not in the filename.
+List them before choosing:
 
 ```bash
 scaffold-binding --mzid ~/data/experiment.mzid.gz --list-samples
 ```
 
-### A first run worth doing
+Pick which runs are treatment and, if you have one, which is the negative
+control (a scrambled scaffold, beads-only, or DMSO run).
 
-Structures are downloaded on demand, so a full run on a large export takes a
-while the first time. Try a handful of proteins first to confirm everything
-works and to see whether your scaffold settings behave sensibly:
+### 2. Trial run
+
+Structures download on demand, so the first full run on a large export is slow.
+Confirm the data parses and your scaffold settings behave on a handful of
+proteins first:
 
 ```bash
 scaffold-binding --mzid ~/data/experiment.mzid.gz \
-  --treatment run_01 --no-control \
+  --treatment run_01 run_02 \
+  --control run_03 \
   --output ~/results/trial \
   --scaffold-size 25 --rigidity 0.7 \
   --max-proteins 5 --permutations 50
 ```
 
-Downloaded structures are cached under the output directory, so point later runs
-at the same `--cache` and they start immediately.
+`--max-proteins` scores only the first few proteins that clear the site
+threshold — enough to prove the pipeline runs, not a real result.
 
-Results, the structure cache, and
-plots all go under the output directory you select.
+### 3. Full run
+
+Drop the trial caps and point at a fresh output directory. Leaving
+`--max-proteins` off scores everything:
+
+```bash
+scaffold-binding --mzid ~/data/experiment.mzid.gz \
+  --treatment run_01 run_02 \
+  --control run_03 \
+  --output ~/results/experiment \
+  --scaffold-size 25 --rigidity 0.7
+```
+
+### 4. Read the results
+
+`binding_site_scores.csv` is the answer, ranked most convincing first. Sort by
+`z_score`: a real binder breaks away from the pack with a high z and a low
+`p_value`. This is where you find candidates — not in the plots, which are drawn
+only for the top-ranked proteins and are there to *inspect* a hit you already
+found in the table. A convincing-looking sphere with a z near zero is still
+noise.
+
+### 5. View a plot
+
+List the plots and open the protein you want to look at:
+
+```bash
+ls ~/results/experiment/plots/
+```
+
+On macOS or Linux, open the file directly — `open FILE.html`, `xdg-open
+FILE.html`, or just double-click it. On WSL (a Windows machine running Linux),
+hand it to your Windows browser instead:
+
+```bash
+explorer.exe "$(wslpath -w ~/results/experiment/plots/PROTEIN_ACCESSION_pocket.html)"
+```
+
+`wslpath -w` rewrites the Linux path into the form Windows needs; the file then
+opens in your default browser. What each colour means is in [Output](#output)
+below.
+
+Downloaded structures cache under the output directory by default, so a repeat
+run on the same export starts immediately. To share one cache across several
+experiments, point them all at the same `--cache ~/some/dir`.
 
 ## The two scaffold parameters
 
@@ -206,6 +246,11 @@ between 0 and 1) is the inner limit.
 | `--no-download` | use only local structures |
 | `--esmfold` | fold proteins AlphaFold lacks, one 400-residue window each |
 | `--no-plots` | skip the 3D output |
+| `--plot-top` | how many top-ranked proteins get a plot (default 5) |
+| `--structures` | directory of local PDB files named by accession, e.g. `P08670.pdb` |
+| `--cache` | where downloaded structures are kept; share one across runs to avoid re-downloading |
+| `--seed` | fix the random seed so the permutation test is reproducible |
+| `--no-control` | run without a negative control and don't prompt for one |
 
 ## How it works
 
