@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,8 @@ name = "scaffold-binding"
 version = "0.1.0"
 description = "Infer covalent binding pockets from scaffold pulldown mass spectrometry"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.9"
 dependencies = [
     "biopython>=1.79",
@@ -22,6 +24,3 @@ scaffold-binding = "scaffold_binding.cli:main"
 
 [tool.setuptools]
 packages = ["scaffold_binding"]
-
-license = "MIT"
-license-files = ["LICENSE"]
