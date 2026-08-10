@@ -13,6 +13,7 @@ from pathlib import Path
 from . import mzid_parser, scoring
 from .io_utils import PathError, confirm, resolve_input_path, resolve_output_dir
 from .pipeline import Settings, run
+from .polymer_form import build_from_args
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -52,19 +53,31 @@ def build_parser() -> argparse.ArgumentParser:
     samples.add_argument("--list-samples", action="store_true",
                          help="print the sample names in the export and exit")
 
-    model = parser.add_argument_group("scaffold model")
+    model = parser.add_argument_group("scaffold chemistry")
+    model.add_argument(
+        "--polymer",
+        help="JSON file describing one repeat unit, bond by bond (see README)",
+    )
+    model.add_argument(
+        "--monomer-units",
+        type=int,
+        default=None,
+        help="repeat units in the scaffold, e.g. 8 for PEG8; may instead be set "
+             "as 'n_units' inside the --polymer file",
+    )
+    model.add_argument(
+        "--persistence-length",
+        type=float,
+        default=None,
+        help="shortcut when rotamer energies are unavailable: the polymer's "
+             "persistence length in angstroms, used with --scaffold-size",
+    )
     model.add_argument(
         "--scaffold-size",
         type=float,
-        help="reach of the scaffold in angstroms; the radius of the fitted shell",
-    )
-    model.add_argument(
-        "--rigidity",
-        type=float,
-        help=(
-            "0 = fully flexible (nothing inside the shell is penalised), "
-            "1 = fully rigid (only the shell surface is unpenalised)"
-        ),
+        default=None,
+        help="contour length of the whole scaffold in angstroms; only needed "
+             "alongside --persistence-length, otherwise derived from the bonds",
     )
 
     tuning = parser.add_argument_group("filters and tuning")
@@ -74,6 +87,9 @@ def build_parser() -> argparse.ArgumentParser:
                         help="capture sites a protein needs to be scored")
     tuning.add_argument("--plddt-floor", type=float, default=scoring.DEFAULT_PLDDT_FLOOR,
                         help="lowest model confidence a residue may have")
+    tuning.add_argument("--grid-spacing", type=float,
+                        default=scoring.DEFAULT_GRID_SPACING,
+                        help="resolution of the pocket search over the surface, in A")
     tuning.add_argument("--permutations", type=int, default=scoring.DEFAULT_PERMUTATIONS,
                         help="random draws used for the significance test")
     tuning.add_argument("--max-proteins", type=int, default=None,
@@ -91,25 +107,6 @@ def build_parser() -> argparse.ArgumentParser:
                            help="how many top-ranked proteins to plot")
 
     return parser
-
-
-def _ask_float(prompt: str, default: float, low: float, high: float) -> float:
-    """Read a number in range, re-asking on bad input, defaulting when piped."""
-    if not sys.stdin.isatty():
-        return default
-    while True:
-        raw = input(f"{prompt} [{default:g}]: ").strip()
-        if not raw:
-            return default
-        try:
-            value = float(raw)
-        except ValueError:
-            print("  Please enter a number.")
-            continue
-        if not low <= value <= high:
-            print(f"  Please enter a value between {low:g} and {high:g}.")
-            continue
-        return value
 
 
 def _choose_samples(
@@ -207,34 +204,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
-    scaffold_size = args.scaffold_size
-    if scaffold_size is None:
-        print(
-            "\nScaffold size is how far the scaffold reaches from its anchor "
-            "point, in angstroms.\nIt sets the radius of the shell fitted "
-            "around each candidate pocket."
-        )
-        scaffold_size = _ask_float(
-            "Scaffold size (A)", scoring.DEFAULT_SCAFFOLD_SIZE, 1.0, 200.0
-        )
-
-    rigidity = args.rigidity
-    if rigidity is None:
-        print(
-            "\nRigidity is how much the scaffold can fold back on itself.\n"
-            "  0.0  fully flexible (PEG-like): any site within reach is fine\n"
-            "  0.7  sites from 0.7x to 1x the scaffold size are unpenalised\n"
-            "  1.0  fully rigid: only sites at exactly the scaffold size fit"
-        )
-        rigidity = _ask_float("Rigidity (0-1)", scoring.DEFAULT_RIGIDITY, 0.0, 1.0)
+    try:
+        reach_model = build_from_args(args)
+    except (RuntimeError, ValueError) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
 
     settings = Settings(
         mzid_path=mzid_path,
         output_dir=output_dir,
         treatment_samples=treatment,
         control_samples=control,
-        scaffold_size=scaffold_size,
-        rigidity=rigidity,
+        reach_model=reach_model,
         structure_dir=structure_dir,
         cache_dir=Path(args.cache).expanduser() if args.cache else None,
         allow_download=not args.no_download,
@@ -242,6 +223,7 @@ def main(argv: list[str] | None = None) -> int:
         min_psms=args.min_psms,
         min_sites=args.min_sites,
         plddt_floor=args.plddt_floor,
+        grid_spacing=args.grid_spacing,
         permutations=args.permutations,
         max_proteins=args.max_proteins,
         plot_top=args.plot_top,
@@ -252,10 +234,10 @@ def main(argv: list[str] | None = None) -> int:
     print()
     results = run(settings)
     if not results.empty:
-        columns = ["gene", "accession", "n_signal_sites", "fraction_reachable",
-                   "z_score", "p_value"]
+        columns = ["gene", "accession", "n_signal_sites", "site_probability",
+                   "credible_region_A", "z_score", "p_value"]
         if settings.has_control:
-            columns.append("signal_vs_control")
+            columns.append("control_fraction_reachable")
         print("\nTop candidates:")
         print(results[columns].head(15).to_string(index=False))
     return 0

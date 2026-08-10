@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 
 from . import mzid_parser, peptides, scoring
+from .reach import ReachModel
 from .structures import StructureProvider
 
 
@@ -20,8 +21,7 @@ class Settings:
     output_dir: Path
     treatment_samples: list[str]
     control_samples: list[str]
-    scaffold_size: float = scoring.DEFAULT_SCAFFOLD_SIZE
-    rigidity: float = scoring.DEFAULT_RIGIDITY
+    reach_model: ReachModel
     structure_dir: Path | None = None
     cache_dir: Path | None = None
     allow_download: bool = True
@@ -29,6 +29,7 @@ class Settings:
     min_psms: int = 1
     min_sites: int = scoring.MIN_SITES
     plddt_floor: float = scoring.DEFAULT_PLDDT_FLOOR
+    grid_spacing: float = scoring.DEFAULT_GRID_SPACING
     permutations: int = scoring.DEFAULT_PERMUTATIONS
     max_proteins: int | None = None
     plot_top: int = 5
@@ -79,8 +80,7 @@ def run(settings: Settings, log=print) -> pd.DataFrame:
     rng = np.random.default_rng(settings.random_seed)
     scores, skipped = [], []
 
-    log(f"\nScoring with scaffold size {settings.scaffold_size:g} A, "
-        f"rigidity {settings.rigidity:g}")
+    log(f"\nScoring against {settings.reach_model.describe()}")
     for index, accession in enumerate(candidates, start=1):
         gene = genes.get(accession)
         label = f"{gene} ({accession})" if gene else accession
@@ -99,9 +99,9 @@ def run(settings: Settings, log=print) -> pd.DataFrame:
             accession,
             table,
             coords,
-            scaffold_size=settings.scaffold_size,
-            rigidity=settings.rigidity,
+            settings.reach_model,
             plddt_floor=settings.plddt_floor,
+            grid_spacing=settings.grid_spacing,
             n_permutations=settings.permutations,
             min_sites=settings.min_sites,
             gene=gene,
@@ -113,11 +113,15 @@ def run(settings: Settings, log=print) -> pd.DataFrame:
             continue
 
         scores.append(score)
-        log(
-            f"  [{index}/{len(candidates)}] {label}: "
-            f"{score.n_signal_sites} sites, {score.fraction_reachable:.0%} in reach, "
-            f"z = {score.z_score:.2f}, p = {score.p_value:.3f}"
-        )
+        if score.binding_site is None:
+            log(f"  [{index}/{len(candidates)}] {label}: "
+                f"{score.n_signal_sites} sites, no pocket reaches them all")
+        else:
+            log(
+                f"  [{index}/{len(candidates)}] {label}: "
+                f"{score.n_signal_sites} sites, pocket +/- {score.credible_region:.0f} A, "
+                f"z = {score.z_score:.2f}, p = {score.p_value:.3f}"
+            )
 
     results = scoring.score_to_frame(scores)
     if results.empty:
@@ -156,7 +160,13 @@ def _write_plots(settings, results, scores, table, provider, log) -> None:
 
     by_accession = {s.accession: s for s in scores}
     plot_dir = settings.output_dir / "plots"
-    top = results.head(settings.plot_top)["accession"].tolist()
+    # There is nothing to draw for a protein with no reachable pocket, and when
+    # most proteins come back that way they would otherwise crowd out the hits.
+    plottable = results[results["binding_site_x"].notna()]
+    top = plottable.head(settings.plot_top)["accession"].tolist()
+    if not top:
+        log("\nNo protein has a reachable pocket, so there is nothing to plot.")
+        return
     log(f"\nWriting {len(top)} interactive plots ...")
 
     for accession in top:
@@ -165,7 +175,8 @@ def _write_plots(settings, results, scores, table, provider, log) -> None:
         if score is None or coords is None:
             continue
         path = plot_protein(
-            score, table, coords, plot_dir, plddt_floor=settings.plddt_floor
+            score, table, coords, settings.reach_model, plot_dir,
+            plddt_floor=settings.plddt_floor, grid_spacing=settings.grid_spacing,
         )
         if path:
             log(f"  {path}")
