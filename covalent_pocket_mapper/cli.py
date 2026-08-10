@@ -179,7 +179,12 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
-    available = mzid_parser.list_samples(mzid_parser.parse_mzid(mzid_path))
+    try:
+        available = mzid_parser.list_samples(mzid_parser.parse_mzid(mzid_path))
+    except ValueError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
+
     if args.list_samples:
         print("\n".join(available))
         return 0

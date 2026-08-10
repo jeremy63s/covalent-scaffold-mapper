@@ -124,8 +124,23 @@ def run(settings: Settings, log=print) -> pd.DataFrame:
             )
 
     results = scoring.score_to_frame(scores)
+
+    # Written before the early return: when nothing scores, this file is the
+    # only record of why, and that is exactly when it is worth having.
+    if skipped:
+        skipped_path = settings.output_dir / "skipped_proteins.csv"
+        pd.DataFrame(skipped, columns=["accession", "reason"]).to_csv(
+            skipped_path, index=False
+        )
+        log(f"\nWrote {skipped_path} ({len(skipped)} proteins)")
+
     if results.empty:
         log("\nNo protein could be scored.")
+        if skipped:
+            reasons = pd.Series([r for _, r in skipped]).value_counts()
+            log("Reasons:")
+            for reason, count in reasons.items():
+                log(f"  {count} x {reason}")
         return results
 
     results_path = settings.output_dir / "binding_site_scores.csv"
@@ -135,13 +150,6 @@ def run(settings: Settings, log=print) -> pd.DataFrame:
     peptide_path = settings.output_dir / "peptide_sites.csv"
     table[table["is_signal"] | table["is_background"]].to_csv(peptide_path, index=False)
     log(f"Wrote {peptide_path}")
-
-    if skipped:
-        skipped_path = settings.output_dir / "skipped_proteins.csv"
-        pd.DataFrame(skipped, columns=["accession", "reason"]).to_csv(
-            skipped_path, index=False
-        )
-        log(f"Wrote {skipped_path} ({len(skipped)} proteins)")
 
     if settings.make_plots and settings.plot_top > 0:
         _write_plots(settings, results, scores, table, provider, log)

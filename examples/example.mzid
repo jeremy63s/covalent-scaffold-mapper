@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MzIdentML xmlns="http://psidev.info/psi/pi/mzIdentML/1.1" version="1.1.0"
+           id="covalent-pocket-mapper example" creationDate="2026-01-01T00:00:00">
+  <cvList>
+    <cv id="PSI-MS" fullName="PSI-MS" uri="https://psidev.info/psi-ms.obo"/>
+  </cvList>
+  <SequenceCollection>
+    <DBSequence id="DBSeq_TOYA" accession="TOYA" length="320"
+                searchDatabase_ref="SDB_example">
+      <Seq>GFKNFAPSFLVNCLNSKSVTDQDWPCVSCPDGGSASYAKCCRKYHQTGAVGMDDGGQQSQYWTMYEKQSHDLGTVRDWGLNCVDQYAHQSWDWCTPNEHGFPPPGYTCIHWGFCQASTGKAIPWNICVPVLKKEESAKMLKQFLDCRFTCTKRPFAVRSCLFADTRNFMEFQKDQQEHETMQWKHFRAHWGEPYGPPQMWTTYIIHLNHIQWIFDFTRFQPERNHCHQTLAAGEVDRYQKPCVAEKAIETATMFFFWAQAIVTETMILGNFRQISEVEPAPIWYHPRQPTCGPYTCDRILPMRGIWLTGKKITAWDFMLD</Seq>
+      <cvParam cvRef="PSI-MS" accession="MS:1001088" name="protein description"
+               value="Synthetic example protein TOYA OS=Example organism GN=TOYA1"/>
+    </DBSequence>
+    <DBSequence id="DBSeq_TOYB" accession="TOYB" length="320"
+                searchDatabase_ref="SDB_example">
+      <Seq>QPETQIWCFICFYRWHHPQWDVQFRFESMYEWWYAHEHWQLNGTCLACKSCYRHDHGGYMEPCSLVVQPFYVHKSCETCFDSDDEKGVRPMVKCHKDYAEAPVKYSSDQKTHPYWCASDFHYVHFCFAGQKFKTKAPACEEPFIIDDCKDRHNNNIEEPLPRTYKDFDGPLLSFHGFMTCIYWAGKTQIHGSHQERHRTVEDWPTWCRFADGPTTCMYVYGQWYRAGQAVAMAGYLGAKIECQNTMEAITAKLESLTSAPKTVYFQVKHIDDVESVTCGDMCWPTFCFLLMWWYKYQPPVIFFHGTGYHWTLEKCPSVNY</Seq>
+      <cvParam cvRef="PSI-MS" accession="MS:1001088" name="protein description"
+               value="Synthetic example protein TOYB OS=Example organism GN=TOYB1"/>
+    </DBSequence>
+    <Peptide id="pep_1"><PeptideSequence>NCVDQYAH</PeptideSequence></Peptide>
+    <Peptide id="pep_2"><PeptideSequence>ASTGKAIP</PeptideSequence></Peptide>
+    <Peptide id="pep_3"><PeptideSequence>GKAIPWNI</PeptideSequence></Peptide>
+    <Peptide id="pep_4"><PeptideSequence>TMQWKHFR</PeptideSequence></Peptide>
+    <Peptide id="pep_5"><PeptideSequence>MQWKHFRA</PeptideSequence></Peptide>
+    <Peptide id="pep_6"><PeptideSequence>TCTKRPFA</PeptideSequence></Peptide>
+    <Peptide id="pep_7"><PeptideSequence>TTYIIHLN</PeptideSequence></Peptide>
+    <Peptide id="pep_8"><PeptideSequence>HIQWIFDF</PeptideSequence></Peptide>
+    <Peptide id="pep_9"><PeptideSequence>FICFYRWH</PeptideSequence></Peptide>
+    <Peptide id="pep_10"><PeptideSequence>VRPMVKCH</PeptideSequence></Peptide>
+    <Peptide id="pep_11"><PeptideSequence>GSHQERHR</PeptideSequence></Peptide>
+    <Peptide id="pep_12"><PeptideSequence>AKLESLTS</PeptideSequence></Peptide>
+    <Peptide id="pep_13"><PeptideSequence>PTFCFLLM</PeptideSequence></Peptide>
+    <PeptideEvidence id="pe_pep_1" peptide_ref="pep_1"
+                    dBSequence_ref="DBSeq_TOYA" start="81" end="88"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_2" peptide_ref="pep_2"
+                    dBSequence_ref="DBSeq_TOYA" start="116" end="123"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_3" peptide_ref="pep_3"
+                    dBSequence_ref="DBSeq_TOYA" start="119" end="126"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_4" peptide_ref="pep_4"
+                    dBSequence_ref="DBSeq_TOYA" start="180" end="187"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_5" peptide_ref="pep_5"
+                    dBSequence_ref="DBSeq_TOYA" start="181" end="188"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_6" peptide_ref="pep_6"
+                    dBSequence_ref="DBSeq_TOYA" start="149" end="156"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_7" peptide_ref="pep_7"
+                    dBSequence_ref="DBSeq_TOYA" start="201" end="208"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_8" peptide_ref="pep_8"
+                    dBSequence_ref="DBSeq_TOYA" start="209" end="216"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_9" peptide_ref="pep_9"
+                    dBSequence_ref="DBSeq_TOYB" start="9" end="16"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_10" peptide_ref="pep_10"
+                    dBSequence_ref="DBSeq_TOYB" start="88" end="95"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_11" peptide_ref="pep_11"
+                    dBSequence_ref="DBSeq_TOYB" start="191" end="198"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_12" peptide_ref="pep_12"
+                    dBSequence_ref="DBSeq_TOYB" start="251" end="258"
+                    isDecoy="false"/>
+    <PeptideEvidence id="pe_pep_13" peptide_ref="pep_13"
+                    dBSequence_ref="DBSeq_TOYB" start="284" end="291"
+                    isDecoy="false"/>
+  </SequenceCollection>
+  <AnalysisCollection>
+    <SpectrumIdentification id="SI" spectrumIdentificationProtocol_ref="SIP"
+                            spectrumIdentificationList_ref="SIL">
+      <InputSpectra spectraData_ref="sample_01"/>
+    </SpectrumIdentification>
+  </AnalysisCollection>
+  <DataCollection>
+    <Inputs>
+      <SearchDatabase id="SDB_example" location="example.fasta"/>
+      <SpectraData id="sample_01" location="sample_01.mgf"/>
+      <SpectraData id="sample_02" location="sample_02.mgf"/>
+      <SpectraData id="sample_03" location="sample_03.mgf"/>
+    </Inputs>
+    <AnalysisData>
+      <SpectrumIdentificationList id="SIL">
+        <SpectrumIdentificationResult id="sir_1" spectraData_ref="sample_01"
+                                     spectrumID="index=1">
+          <SpectrumIdentificationItem id="sii_1" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_2" spectraData_ref="sample_01"
+                                     spectrumID="index=2">
+          <SpectrumIdentificationItem id="sii_2" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_3" spectraData_ref="sample_01"
+                                     spectrumID="index=3">
+          <SpectrumIdentificationItem id="sii_3" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_4" spectraData_ref="sample_02"
+                                     spectrumID="index=4">
+          <SpectrumIdentificationItem id="sii_4" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_5" spectraData_ref="sample_02"
+                                     spectrumID="index=5">
+          <SpectrumIdentificationItem id="sii_5" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_6" spectraData_ref="sample_02"
+                                     spectrumID="index=6">
+          <SpectrumIdentificationItem id="sii_6" peptide_ref="pep_1" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_1"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_7" spectraData_ref="sample_01"
+                                     spectrumID="index=7">
+          <SpectrumIdentificationItem id="sii_7" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_8" spectraData_ref="sample_01"
+                                     spectrumID="index=8">
+          <SpectrumIdentificationItem id="sii_8" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_9" spectraData_ref="sample_01"
+                                     spectrumID="index=9">
+          <SpectrumIdentificationItem id="sii_9" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_10" spectraData_ref="sample_02"
+                                     spectrumID="index=10">
+          <SpectrumIdentificationItem id="sii_10" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_11" spectraData_ref="sample_02"
+                                     spectrumID="index=11">
+          <SpectrumIdentificationItem id="sii_11" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_12" spectraData_ref="sample_02"
+                                     spectrumID="index=12">
+          <SpectrumIdentificationItem id="sii_12" peptide_ref="pep_2" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_2"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_13" spectraData_ref="sample_01"
+                                     spectrumID="index=13">
+          <SpectrumIdentificationItem id="sii_13" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_14" spectraData_ref="sample_01"
+                                     spectrumID="index=14">
+          <SpectrumIdentificationItem id="sii_14" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_15" spectraData_ref="sample_01"
+                                     spectrumID="index=15">
+          <SpectrumIdentificationItem id="sii_15" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_16" spectraData_ref="sample_02"
+                                     spectrumID="index=16">
+          <SpectrumIdentificationItem id="sii_16" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_17" spectraData_ref="sample_02"
+                                     spectrumID="index=17">
+          <SpectrumIdentificationItem id="sii_17" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_18" spectraData_ref="sample_02"
+                                     spectrumID="index=18">
+          <SpectrumIdentificationItem id="sii_18" peptide_ref="pep_3" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_3"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_19" spectraData_ref="sample_01"
+                                     spectrumID="index=19">
+          <SpectrumIdentificationItem id="sii_19" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_20" spectraData_ref="sample_01"
+                                     spectrumID="index=20">
+          <SpectrumIdentificationItem id="sii_20" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_21" spectraData_ref="sample_01"
+                                     spectrumID="index=21">
+          <SpectrumIdentificationItem id="sii_21" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_22" spectraData_ref="sample_02"
+                                     spectrumID="index=22">
+          <SpectrumIdentificationItem id="sii_22" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_23" spectraData_ref="sample_02"
+                                     spectrumID="index=23">
+          <SpectrumIdentificationItem id="sii_23" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_24" spectraData_ref="sample_02"
+                                     spectrumID="index=24">
+          <SpectrumIdentificationItem id="sii_24" peptide_ref="pep_4" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_4"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_25" spectraData_ref="sample_01"
+                                     spectrumID="index=25">
+          <SpectrumIdentificationItem id="sii_25" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_26" spectraData_ref="sample_01"
+                                     spectrumID="index=26">
+          <SpectrumIdentificationItem id="sii_26" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_27" spectraData_ref="sample_01"
+                                     spectrumID="index=27">
+          <SpectrumIdentificationItem id="sii_27" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_28" spectraData_ref="sample_02"
+                                     spectrumID="index=28">
+          <SpectrumIdentificationItem id="sii_28" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_29" spectraData_ref="sample_02"
+                                     spectrumID="index=29">
+          <SpectrumIdentificationItem id="sii_29" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_30" spectraData_ref="sample_02"
+                                     spectrumID="index=30">
+          <SpectrumIdentificationItem id="sii_30" peptide_ref="pep_5" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_5"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_31" spectraData_ref="sample_01"
+                                     spectrumID="index=31">
+          <SpectrumIdentificationItem id="sii_31" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_32" spectraData_ref="sample_01"
+                                     spectrumID="index=32">
+          <SpectrumIdentificationItem id="sii_32" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_33" spectraData_ref="sample_02"
+                                     spectrumID="index=33">
+          <SpectrumIdentificationItem id="sii_33" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_34" spectraData_ref="sample_02"
+                                     spectrumID="index=34">
+          <SpectrumIdentificationItem id="sii_34" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_35" spectraData_ref="sample_03"
+                                     spectrumID="index=35">
+          <SpectrumIdentificationItem id="sii_35" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_36" spectraData_ref="sample_03"
+                                     spectrumID="index=36">
+          <SpectrumIdentificationItem id="sii_36" peptide_ref="pep_6" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_6"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_37" spectraData_ref="sample_01"
+                                     spectrumID="index=37">
+          <SpectrumIdentificationItem id="sii_37" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_38" spectraData_ref="sample_01"
+                                     spectrumID="index=38">
+          <SpectrumIdentificationItem id="sii_38" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_39" spectraData_ref="sample_02"
+                                     spectrumID="index=39">
+          <SpectrumIdentificationItem id="sii_39" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_40" spectraData_ref="sample_02"
+                                     spectrumID="index=40">
+          <SpectrumIdentificationItem id="sii_40" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_41" spectraData_ref="sample_03"
+                                     spectrumID="index=41">
+          <SpectrumIdentificationItem id="sii_41" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_42" spectraData_ref="sample_03"
+                                     spectrumID="index=42">
+          <SpectrumIdentificationItem id="sii_42" peptide_ref="pep_7" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_7"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_43" spectraData_ref="sample_01"
+                                     spectrumID="index=43">
+          <SpectrumIdentificationItem id="sii_43" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_44" spectraData_ref="sample_01"
+                                     spectrumID="index=44">
+          <SpectrumIdentificationItem id="sii_44" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_45" spectraData_ref="sample_02"
+                                     spectrumID="index=45">
+          <SpectrumIdentificationItem id="sii_45" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_46" spectraData_ref="sample_02"
+                                     spectrumID="index=46">
+          <SpectrumIdentificationItem id="sii_46" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_47" spectraData_ref="sample_03"
+                                     spectrumID="index=47">
+          <SpectrumIdentificationItem id="sii_47" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_48" spectraData_ref="sample_03"
+                                     spectrumID="index=48">
+          <SpectrumIdentificationItem id="sii_48" peptide_ref="pep_8" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_8"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_49" spectraData_ref="sample_01"
+                                     spectrumID="index=49">
+          <SpectrumIdentificationItem id="sii_49" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_50" spectraData_ref="sample_01"
+                                     spectrumID="index=50">
+          <SpectrumIdentificationItem id="sii_50" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_51" spectraData_ref="sample_01"
+                                     spectrumID="index=51">
+          <SpectrumIdentificationItem id="sii_51" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_52" spectraData_ref="sample_02"
+                                     spectrumID="index=52">
+          <SpectrumIdentificationItem id="sii_52" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_53" spectraData_ref="sample_02"
+                                     spectrumID="index=53">
+          <SpectrumIdentificationItem id="sii_53" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_54" spectraData_ref="sample_02"
+                                     spectrumID="index=54">
+          <SpectrumIdentificationItem id="sii_54" peptide_ref="pep_9" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_9"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_55" spectraData_ref="sample_01"
+                                     spectrumID="index=55">
+          <SpectrumIdentificationItem id="sii_55" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_56" spectraData_ref="sample_01"
+                                     spectrumID="index=56">
+          <SpectrumIdentificationItem id="sii_56" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_57" spectraData_ref="sample_01"
+                                     spectrumID="index=57">
+          <SpectrumIdentificationItem id="sii_57" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_58" spectraData_ref="sample_02"
+                                     spectrumID="index=58">
+          <SpectrumIdentificationItem id="sii_58" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_59" spectraData_ref="sample_02"
+                                     spectrumID="index=59">
+          <SpectrumIdentificationItem id="sii_59" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_60" spectraData_ref="sample_02"
+                                     spectrumID="index=60">
+          <SpectrumIdentificationItem id="sii_60" peptide_ref="pep_10" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_10"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_61" spectraData_ref="sample_01"
+                                     spectrumID="index=61">
+          <SpectrumIdentificationItem id="sii_61" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_62" spectraData_ref="sample_01"
+                                     spectrumID="index=62">
+          <SpectrumIdentificationItem id="sii_62" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_63" spectraData_ref="sample_01"
+                                     spectrumID="index=63">
+          <SpectrumIdentificationItem id="sii_63" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_64" spectraData_ref="sample_02"
+                                     spectrumID="index=64">
+          <SpectrumIdentificationItem id="sii_64" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_65" spectraData_ref="sample_02"
+                                     spectrumID="index=65">
+          <SpectrumIdentificationItem id="sii_65" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_66" spectraData_ref="sample_02"
+                                     spectrumID="index=66">
+          <SpectrumIdentificationItem id="sii_66" peptide_ref="pep_11" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_11"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_67" spectraData_ref="sample_01"
+                                     spectrumID="index=67">
+          <SpectrumIdentificationItem id="sii_67" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_68" spectraData_ref="sample_01"
+                                     spectrumID="index=68">
+          <SpectrumIdentificationItem id="sii_68" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_69" spectraData_ref="sample_01"
+                                     spectrumID="index=69">
+          <SpectrumIdentificationItem id="sii_69" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_70" spectraData_ref="sample_02"
+                                     spectrumID="index=70">
+          <SpectrumIdentificationItem id="sii_70" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_71" spectraData_ref="sample_02"
+                                     spectrumID="index=71">
+          <SpectrumIdentificationItem id="sii_71" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_72" spectraData_ref="sample_02"
+                                     spectrumID="index=72">
+          <SpectrumIdentificationItem id="sii_72" peptide_ref="pep_12" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_12"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_73" spectraData_ref="sample_01"
+                                     spectrumID="index=73">
+          <SpectrumIdentificationItem id="sii_73" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_74" spectraData_ref="sample_01"
+                                     spectrumID="index=74">
+          <SpectrumIdentificationItem id="sii_74" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_75" spectraData_ref="sample_01"
+                                     spectrumID="index=75">
+          <SpectrumIdentificationItem id="sii_75" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_76" spectraData_ref="sample_02"
+                                     spectrumID="index=76">
+          <SpectrumIdentificationItem id="sii_76" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_77" spectraData_ref="sample_02"
+                                     spectrumID="index=77">
+          <SpectrumIdentificationItem id="sii_77" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+        <SpectrumIdentificationResult id="sir_78" spectraData_ref="sample_02"
+                                     spectrumID="index=78">
+          <SpectrumIdentificationItem id="sii_78" peptide_ref="pep_13" chargeState="2"
+                                      experimentalMassToCharge="500.0" passThreshold="true" rank="1">
+            <PeptideEvidenceRef peptideEvidence_ref="pe_pep_13"/>
+            <cvParam cvRef="PSI-MS" accession="MS:1001155" name="Sequest:xcorr" value="3.5"/>
+          </SpectrumIdentificationItem>
+        </SpectrumIdentificationResult>
+      </SpectrumIdentificationList>
+    </AnalysisData>
+  </DataCollection>
+</MzIdentML>

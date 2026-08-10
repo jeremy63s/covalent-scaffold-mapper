@@ -1,0 +1,13 @@
+{
+  "name": "PEG",
+  "temperature_K": 298,
+  "n_units": 8,
+  "bonds": [
+    {"length_A": 1.53, "angle_deg": 109.5,
+     "torsion": {"type": "ris", "states_deg": [180, 60, -60], "energies_kcal": [0.0, 0.5, 0.5]}},
+    {"length_A": 1.43, "angle_deg": 111.5,
+     "torsion": {"type": "ris", "states_deg": [180, 60, -60], "energies_kcal": [0.3, 0.0, 0.0]}},
+    {"length_A": 1.43, "angle_deg": 111.5,
+     "torsion": {"type": "ris", "states_deg": [180, 60, -60], "energies_kcal": [0.0, 0.5, 0.5]}}
+  ]
+}

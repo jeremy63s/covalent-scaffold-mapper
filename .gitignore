@@ -22,5 +22,11 @@ structures/
 *.mgf
 *.raw
 
+# The bundled example is exempt from all of the above. It is small, synthetic,
+# and the only way to try the tool without already having your own data.
+!examples/
+!examples/structures/
+!examples/**
+
 # macOS
 .DS_Store

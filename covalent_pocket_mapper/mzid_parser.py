@@ -28,6 +28,35 @@ def _open(path: Path):
     return open(path, "r", encoding="utf-8")
 
 
+def _read_xml(path: Path) -> ET.Element:
+    """Parse the file, or explain what went wrong in terms of the input.
+
+    Pointing at the wrong file is the most common first mistake, and a raw
+    XML stack trace does not tell you that is what happened.
+    """
+    try:
+        with _open(path) as handle:
+            return ET.parse(handle).getroot()
+    except ET.ParseError as exc:
+        raise ValueError(
+            f"{path} is not valid XML, so it cannot be an mzIdentML export "
+            f"(parser said: {exc}).\nExpected a .mzid or .mzid.gz file — in "
+            "Scaffold, Export > mzIdentML. A spreadsheet, peptide CSV, or raw "
+            "instrument file will not work."
+        ) from None
+    except (OSError, EOFError) as exc:
+        raise ValueError(
+            f"{path} could not be read ({exc}). If it ends in .gz, check the "
+            "file is a complete, uncorrupted gzip archive."
+        ) from None
+    except UnicodeDecodeError:
+        raise ValueError(
+            f"{path} is not text, so it cannot be an mzIdentML export. This is "
+            "usually a raw instrument file or a compressed archive that was not "
+            "named .gz."
+        ) from None
+
+
 def _namespace(root: ET.Element) -> dict[str, str]:
     match = re.match(r"\{(.+)\}", root.tag)
     return {"mz": match.group(1)} if match else {"mz": ""}
@@ -47,9 +76,7 @@ def parse_mzid(path: str | Path, *, passing_only: bool = True) -> pd.DataFrame:
     pass_threshold, is_decoy, sample.
     """
     path = Path(path)
-    with _open(path) as handle:
-        tree = ET.parse(handle)
-    root = tree.getroot()
+    root = _read_xml(path)
     ns = _namespace(root)
 
     peptide_seqs: dict[str, str] = {}
@@ -147,9 +174,7 @@ def parse_proteins(path: str | Path) -> pd.DataFrame:
     so gene symbols come free with the export and need no lookup.
     """
     path = Path(path)
-    with _open(path) as handle:
-        tree = ET.parse(handle)
-    root = tree.getroot()
+    root = _read_xml(path)
     ns = _namespace(root)
 
     records = []

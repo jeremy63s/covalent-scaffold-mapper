@@ -29,6 +29,10 @@ from. No spreadsheet exports, peptide CSVs, or FASTA files are needed.
 [Describing your scaffold](#describing-your-scaffold) — it is table lookups, not
 a structure file.
 
+Neither is needed just to try the tool: a synthetic export, matching structures,
+and a filled-in PEG8 form ship in [examples/](examples/). See [Check it
+works](#check-it-works).
+
 **Optional:** a negative control run in the same export — a
 scrambled scaffold, beads-only, or DMSO condition. See
 [Running without a control](#running-without-a-control).
@@ -69,6 +73,28 @@ If you would rather not install anything, `pip install -r requirements.txt` and
 then run `python -m covalent_pocket_mapper` from the repository root (the folder that
 contains `covalent_pocket_mapper/`). Every command below works the same way, just with
 that longer form.
+
+### Check it works
+
+A small synthetic dataset ships with the repository, so you can confirm the
+install before you have your own data. From the repository root:
+
+```bash
+covalent-pocket-mapper \
+  --mzid examples/example.mzid \
+  --polymer examples/peg8.json \
+  --structures examples/structures --no-download \
+  --treatment sample_01 sample_02 \
+  --control sample_03 \
+  --output /tmp/cpm-example \
+  --permutations 200
+```
+
+A few seconds, no network. You should get two proteins with deliberately
+opposite answers — `TOYA1` at `p = 0.005`, a real pocket planted where the tool
+finds it, and `TOYB1` at `p = 0.97`, sites scattered so that no single pocket
+explains them. If you see those two lines, everything works. [examples/](examples/)
+explains how the data were built and what the numbers mean.
 
 ## Run
 
