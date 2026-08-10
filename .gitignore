@@ -9,7 +9,7 @@ dist/
 .ipynb_checkpoints/
 
 # Analysis outputs and cached structures - regenerate these, don't commit them
-scaffold_binding_results/
+covalent_pocket_mapper_results/
 results/
 structures/
 *.pdb

@@ -18,7 +18,7 @@ from .polymer_form import build_from_args
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="scaffold-binding",
+        prog="covalent-pocket-mapper",
         description=(
             "Find candidate covalent binding pockets by testing whether a "
             "scaffold's captured peptides cluster on the 3D structure."
@@ -192,7 +192,7 @@ def main(argv: list[str] | None = None) -> int:
         output_dir = resolve_output_dir(
             args.output,
             "Directory to write results into",
-            default=Path.cwd() / "scaffold_binding_results",
+            default=Path.cwd() / "covalent_pocket_mapper_results",
         )
         structure_dir = (
             resolve_input_path(args.structures, "Directory of PDB structures",

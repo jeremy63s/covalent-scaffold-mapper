@@ -1,4 +1,4 @@
-# scaffold-binding
+# covalent-pocket-mapper
 
 Finds candidate covalent binding pockets from scaffold pulldown mass spectrometry.
 
@@ -46,8 +46,8 @@ Needs Python 3.9 or newer and nothing else — no compilers, no system libraries
 no external tools.
 
 ```bash
-git clone https://github.com/jeremy63s/covalent-scaffold-mapper
-cd covalent-scaffold-mapper
+git clone https://github.com/jeremy63s/covalent-pocket-mapper
+cd covalent-pocket-mapper
 
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -55,19 +55,19 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install .
 ```
 
-That installs the dependencies and puts a `scaffold-binding` command on your
+That installs the dependencies and puts a `covalent-pocket-mapper` command on your
 path, which works from any directory. Check it came through:
 
 ```bash
-scaffold-binding --help
+covalent-pocket-mapper --help
 ```
 
 If you plan to edit the code, use `pip install -e .` instead so your changes
 take effect without reinstalling.
 
 If you would rather not install anything, `pip install -r requirements.txt` and
-then run `python -m scaffold_binding` from the repository root (the folder that
-contains `scaffold_binding/`). Every command below works the same way, just with
+then run `python -m covalent_pocket_mapper` from the repository root (the folder that
+contains `covalent_pocket_mapper/`). Every command below works the same way, just with
 that longer form.
 
 ## Run
@@ -76,7 +76,7 @@ The workflow is five steps: list the samples, do a small trial run, run the full
 set, read the results table, then open a plot to inspect a candidate. The table
 is the answer; the plots are for checking it.
 
-With no arguments, `scaffold-binding` asks for everything one question at a
+With no arguments, `covalent-pocket-mapper` asks for everything one question at a
 time, including the scaffold form, which it explains as it goes — a fine way to
 start. The steps below are the same thing, run explicitly.
 
@@ -86,7 +86,7 @@ Your treatment and control names live *inside* the export, not in the filename.
 List them before choosing:
 
 ```bash
-scaffold-binding --mzid ~/data/experiment.mzid.gz --list-samples
+covalent-pocket-mapper --mzid ~/data/experiment.mzid.gz --list-samples
 ```
 
 Pick which runs are treatment and, if you have one, which is the negative
@@ -99,7 +99,7 @@ Confirm the data parses and your scaffold settings behave on a handful of
 proteins first:
 
 ```bash
-scaffold-binding --mzid ~/data/experiment.mzid.gz \
+covalent-pocket-mapper --mzid ~/data/experiment.mzid.gz \
   --treatment run_01 run_02 \
   --control run_03 \
   --output ~/results/trial \
@@ -116,7 +116,7 @@ Drop the trial caps and point at a fresh output directory. Leaving
 `--max-proteins` off scores everything:
 
 ```bash
-scaffold-binding --mzid ~/data/experiment.mzid.gz \
+covalent-pocket-mapper --mzid ~/data/experiment.mzid.gz \
   --treatment run_01 run_02 \
   --control run_03 \
   --output ~/results/experiment \
@@ -173,7 +173,7 @@ experiments, point them all at the same `--cache ~/some/dir`.
 
 The scaffold's reach is derived from its chemistry rather than guessed, so this
 is the one thing you have to supply beyond the mzIdentML file. There are two
-routes. Run `scaffold-binding` with no arguments and it walks you through
+routes. Run `covalent-pocket-mapper` with no arguments and it walks you through
 either one.
 
 ### Route 1: the per-bond form (most faithful)
@@ -224,7 +224,7 @@ entirely. Look up one number — the **persistence length**, tabulated for
 essentially everything common — and give the scaffold's total contour length:
 
 ```bash
-scaffold-binding --persistence-length 3.8 --scaffold-size 28.9 ...
+covalent-pocket-mapper --persistence-length 3.8 --scaffold-size 28.9 ...
 ```
 
 You lose a little accuracy at the very-short-chain extreme, where the smooth
